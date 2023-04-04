@@ -125,8 +125,8 @@
 	</scm>
 
 	<properties>
-		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
-		<tycho-version>3.0.5</tycho-version>
+		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>	
+		<tycho-version>4.0.0-SNAPSHOT</tycho-version>
 
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
@@ -219,6 +219,12 @@
 			</releases>
 		</repository>
 	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>tycho-snapshots</id>
+			<url>https://repo.eclipse.org/content/repositories/tycho-snapshots/</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<profiles>
 		<profile>
@@ -503,6 +509,7 @@
 					<!--
 					This is not needed now, but will be needed when switching to Tycho 4.0.0
 					see https://github.com/eclipse-tycho/tycho/blob/master/RELEASE_NOTES.md#using-integrationplugin-tests-with-eclipse-plugin-packaging
+					-->
 					<executions>
 						<execution>
 							<id>execute-unit-tests</id>
@@ -511,7 +518,6 @@
 							</goals>
 						</execution>
 					</executions>
-					-->
 					<configuration>
 						<!--
 						The Surefire Plugin excludes nested classes by default: http://maven.apache.org/surefire/maven-surefire-plugin/test-mojo.html#excludes
