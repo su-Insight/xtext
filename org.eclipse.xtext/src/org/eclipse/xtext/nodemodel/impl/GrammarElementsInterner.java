@@ -24,7 +24,6 @@ import com.google.common.collect.ObjectArrays;
  * so it makes sense to remove the duplicate arrays.  This {@link GrammarElementsInterner} tries to reuse an interned version of such an array
  * wherever possible
  */
-
 public class GrammarElementsInterner {
 
 	private static class InternKey {
@@ -82,7 +81,7 @@ public class GrammarElementsInterner {
 	 * this code will only function efficiently if repeated invocation uses the same grammar element
 	 * objects and arrays or else a new concatenated array will be created every time.
 	 */
-	EObject[] prependAndIntern(EObject grammarElement, Object grammarElements) {
+	protected EObject[] prependAndIntern(EObject grammarElement, Object grammarElements) {
 		GrammarElementsInterner.InternKey internKey = new InternKey(grammarElement, grammarElements);
 		return interningMap.computeIfAbsent(internKey, key -> key.prependedGrammarElements());
 	}
@@ -93,7 +92,7 @@ public class GrammarElementsInterner {
 	 * this code will only function efficiently if repeated invocation uses the same grammar element
 	 * objects and arrays or else a new concatenated array will be created every time.
 	 */
-	EObject[] appendAndIntern(Object grammarElements, EObject grammarElement) {
+	protected EObject[] appendAndIntern(Object grammarElements, EObject grammarElement) {
 		GrammarElementsInterner.InternKey internKey = new InternKey(grammarElement, grammarElements);
 		return interningMap.computeIfAbsent(internKey, key -> key.appendedGrammarElements());
 	}
