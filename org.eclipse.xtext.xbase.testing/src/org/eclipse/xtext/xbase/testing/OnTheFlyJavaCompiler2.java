@@ -42,7 +42,7 @@ public class OnTheFlyJavaCompiler2 {
 	 */
 	@Inject
 	public OnTheFlyJavaCompiler2(ClassLoader scope) {
-		this(scope, JavaVersion.JAVA6);
+		this(scope, JavaVersion.JAVA8);
 	}
 
 	public OnTheFlyJavaCompiler2(ClassLoader scope, JavaVersion version) {
