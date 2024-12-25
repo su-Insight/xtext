@@ -8,11 +8,11 @@
  */
 package org.eclipse.xtend.ide.tests.compiler;
 
-import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
 import com.google.inject.Inject;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
@@ -106,7 +106,7 @@ public class JavaVersionSettingTest extends Assert {
       Assert.assertTrue("Generated Java file does not exist.", javaFile.exists());
       this.assertNoErrors(javaFile);
       final InputStream javaFileStream = javaFile.getContents();
-      InputStreamReader _inputStreamReader = new InputStreamReader(javaFileStream, Charsets.UTF_8);
+      InputStreamReader _inputStreamReader = new InputStreamReader(javaFileStream, StandardCharsets.UTF_8);
       final String content = CharStreams.toString(_inputStreamReader);
       javaFileStream.close();
       return content;

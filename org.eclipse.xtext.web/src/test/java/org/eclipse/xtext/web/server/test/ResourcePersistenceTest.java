@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015, 2020 itemis AG (http://www.itemis.eu) and others.
+ * Copyright (c) 2015, 2024 itemis AG (http://www.itemis.eu) and others.
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
  * http://www.eclipse.org/legal/epl-2.0.
@@ -9,13 +9,13 @@
 package org.eclipse.xtext.web.server.test;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 
 import org.eclipse.xtext.web.server.XtextServiceDispatcher;
 import org.eclipse.xtext.web.server.persistence.ResourceContentResult;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMap.Builder;
 import com.google.common.io.Files;
@@ -88,7 +88,7 @@ public class ResourcePersistenceTest extends AbstractWebServerTest {
 				nb().put("serviceType", "save").put("resource", file.getName()).build(), session);
 		Assert.assertTrue(save.isHasSideEffects());
 		save.getService().apply();
-		String resourceContent = Files.asCharSource(file, Charsets.UTF_8).read();
+		String resourceContent = Files.asCharSource(file, StandardCharsets.UTF_8).read();
 		assertEquals("state bar end", resourceContent);
 	}
 

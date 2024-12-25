@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015, 2020 itemis AG (http://www.itemis.eu) and others.
+ * Copyright (c) 2015, 2024 itemis AG (http://www.itemis.eu) and others.
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
  * http://www.eclipse.org/legal/epl-2.0.
@@ -11,6 +11,7 @@ package org.eclipse.xtext.xtext.wizard.cli;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -43,7 +44,6 @@ import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
@@ -288,7 +288,7 @@ public class CliWizardIntegrationTest {
 			}
 		};
 		result.setXtextVersion(new XtextVersion("unspecified"));
-		result.setEncoding(Charsets.UTF_8);
+		result.setEncoding(StandardCharsets.UTF_8);
 		result.setLineDelimiter(LineDelimiter.UNIX.getValue());
 		result.getLanguage().setName("mydsl.MyDsl");
 		result.getLanguage().setFileExtensions(LanguageDescriptor.FileExtensions.fromString("mydsl"));

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2022 itemis AG (http://www.itemis.eu) and others.
+ * Copyright (c) 2018, 2024 itemis AG (http://www.itemis.eu) and others.
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
  * http://www.eclipse.org/legal/epl-2.0.
@@ -10,6 +10,7 @@ package org.eclipse.xtext.xtext.wizard.cli;
 
 import java.io.File;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -27,8 +28,6 @@ import org.eclipse.xtext.xtext.wizard.WizardConfiguration;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
-
-import com.google.common.base.Charsets;
 
 /**
  * 
@@ -60,7 +59,7 @@ public class CliProjectsCreatorMain {
 	private String fileExtension;
 
 	@Option(name = "-encoding", usage = "File encoding")
-	private String encoding = Charsets.UTF_8.name();
+	private String encoding = StandardCharsets.UTF_8.name();
 
 	@Option(name = "-xtextVersion", usage = "Xtext Version (for code header comments)")
 	private String xtextVersion = "unspecified";

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 itemis AG (http://www.itemis.eu) and others.
+ * Copyright (c) 2009, 2024 itemis AG (http://www.itemis.eu) and others.
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
  * http://www.eclipse.org/legal/epl-2.0.
@@ -11,6 +11,7 @@ package org.eclipse.xtext.resource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -20,8 +21,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.URIHandler;
 import org.eclipse.xtext.util.LazyStringInputStream;
-
-import com.google.common.base.Charsets;
 
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
@@ -70,7 +69,7 @@ public class ExternalContentSupport implements IExternalContentSupport {
 		public InputStream createInputStream(URI uri, Map<?, ?> options) throws IOException {
 			String content = contentProvider.getContent(uri);
 			if (content != null) {
-				return new LazyStringInputStream(content, Charsets.UTF_8);
+				return new LazyStringInputStream(content, StandardCharsets.UTF_8);
 			}
 			return delegate.createInputStream(uri, options);
 		}

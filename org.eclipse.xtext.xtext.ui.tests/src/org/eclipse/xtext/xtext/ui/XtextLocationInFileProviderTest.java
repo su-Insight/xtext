@@ -8,8 +8,6 @@
  *******************************************************************************/
 package org.eclipse.xtext.xtext.ui;
 
-import static org.junit.Assert.*;
-
 import org.eclipse.xtext.AbstractElement;
 import org.eclipse.xtext.AbstractMetamodelDeclaration;
 import org.eclipse.xtext.Grammar;
