@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2016 itemis AG (http://www.itemis.eu) and others.
+ * Copyright (c) 2013, 2024 itemis AG (http://www.itemis.eu) and others.
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
  * http://www.eclipse.org/legal/epl-2.0.
@@ -8,6 +8,7 @@
  *******************************************************************************/
 package org.eclipse.xtend.core.tests.compiler;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.Set;
 
@@ -28,7 +29,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.google.common.base.Charsets;
 import com.google.inject.Inject;
 
 /**
@@ -43,19 +43,19 @@ public class UnicodeAwarePostProcessorTest extends Assert implements IJvmModelAs
 	
 	@Test
 	public void testUTF8_plain() {
-		CharSequence result = postProcessor.postProcess(URI.createFileURI("com/acme/MyFile.java"), "\u03b1\u03c1\u03b5\u03c4\u03b7", Charsets.UTF_8);
+		CharSequence result = postProcessor.postProcess(URI.createFileURI("com/acme/MyFile.java"), "\u03b1\u03c1\u03b5\u03c4\u03b7", StandardCharsets.UTF_8);
 		assertEquals("\u03b1\u03c1\u03b5\u03c4\u03b7", result.toString());
 	}
 	
 	@Test
 	public void testISO_8859_1_plain() {
-		CharSequence result = postProcessor.postProcess(URI.createFileURI("com/acme/MyFile.java"), "\u03b1\u03c1\u03b5\u03c4\u03b7", Charsets.ISO_8859_1);
+		CharSequence result = postProcessor.postProcess(URI.createFileURI("com/acme/MyFile.java"), "\u03b1\u03c1\u03b5\u03c4\u03b7", StandardCharsets.ISO_8859_1);
 		assertEquals("\\u03b1\\u03c1\\u03b5\\u03c4\\u03b7", result.toString());
 	}
 	
 	@Test
 	public void testOnlyJavaEscaped() {
-		CharSequence result = postProcessor.postProcess(URI.createFileURI("com/acme/MyFile.notJava"), "\u03b1\u03c1\u03b5\u03c4\u03b7", Charsets.ISO_8859_1);
+		CharSequence result = postProcessor.postProcess(URI.createFileURI("com/acme/MyFile.notJava"), "\u03b1\u03c1\u03b5\u03c4\u03b7", StandardCharsets.ISO_8859_1);
 		assertEquals("\u03b1\u03c1\u03b5\u03c4\u03b7", result.toString());
 	}
 	
@@ -63,7 +63,7 @@ public class UnicodeAwarePostProcessorTest extends Assert implements IJvmModelAs
 	public void testUTF8_tree() {
 		TreeAppendable treeAppendable = new TreeAppendable(null, null, this, this, EcoreFactory.eINSTANCE.createEObject(), "  ", "\n");
 		treeAppendable.append("\u03b1\u03c1\u03b5\u03c4\u03b7");
-		CharSequence result = postProcessor.postProcess(URI.createFileURI("com/acme/MyFile.java"), treeAppendable, Charsets.UTF_8);
+		CharSequence result = postProcessor.postProcess(URI.createFileURI("com/acme/MyFile.java"), treeAppendable, StandardCharsets.UTF_8);
 		assertSame(treeAppendable, result);
 		assertEquals("\u03b1\u03c1\u03b5\u03c4\u03b7", result.toString());
 	}
@@ -72,7 +72,7 @@ public class UnicodeAwarePostProcessorTest extends Assert implements IJvmModelAs
 	public void testISO_8859_1_tree() {
 		TreeAppendable treeAppendable = new TreeAppendable(null, null, this, this, EcoreFactory.eINSTANCE.createEObject(), "  ", "\n");
 		treeAppendable.append("\u03b1\u03c1\u03b5\u03c4\u03b7");
-		CharSequence result = postProcessor.postProcess(URI.createFileURI("com/acme/MyFile.java"), treeAppendable, Charsets.ISO_8859_1);
+		CharSequence result = postProcessor.postProcess(URI.createFileURI("com/acme/MyFile.java"), treeAppendable, StandardCharsets.ISO_8859_1);
 		assertSame(treeAppendable, result);
 		assertEquals("\\u03b1\\u03c1\\u03b5\\u03c4\\u03b7", result.toString());
 	}

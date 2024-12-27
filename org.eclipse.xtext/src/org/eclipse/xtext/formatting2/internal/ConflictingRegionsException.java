@@ -11,7 +11,6 @@ package org.eclipse.xtext.formatting2.internal;
 import java.util.Collection;
 
 import org.eclipse.xtext.formatting2.debug.TextRegionsWithTitleToString;
-import org.eclipse.xtext.util.Exceptions;
 
 /**
  * @author Moritz Eysholdt - Initial contribution and API

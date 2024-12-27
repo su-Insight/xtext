@@ -8,10 +8,10 @@
  *******************************************************************************/
 package org.eclipse.xtend.ide.tests.compiler
 
-import com.google.common.base.Charsets
 import com.google.common.io.CharStreams
 import com.google.inject.Inject
 import java.io.InputStreamReader
+import java.nio.charset.StandardCharsets
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IMarker
 import org.eclipse.core.resources.IProject
@@ -20,6 +20,7 @@ import org.eclipse.ui.texteditor.MarkerUtilities
 import org.eclipse.xtend.ide.internal.XtendActivator
 import org.eclipse.xtend.ide.tests.WorkbenchTestHelper
 import org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil
+import org.eclipse.xtext.ui.testing.util.TargetPlatformUtil
 import org.eclipse.xtext.util.JavaVersion
 import org.junit.After
 import org.junit.AfterClass
@@ -29,7 +30,6 @@ import org.junit.BeforeClass
 import org.junit.Test
 
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.*
-import org.eclipse.xtext.ui.testing.util.TargetPlatformUtil
 
 /**
  * @author Miro Spoenemann - Initial contribution and API
@@ -84,7 +84,7 @@ class JavaVersionSettingTest extends Assert {
 		assertTrue("Generated Java file does not exist.", javaFile.exists)
 		assertNoErrors(javaFile)
 		val javaFileStream = javaFile.contents
-		val content = CharStreams.toString(new InputStreamReader(javaFileStream, Charsets.UTF_8))
+		val content = CharStreams.toString(new InputStreamReader(javaFileStream, StandardCharsets.UTF_8))
 		javaFileStream.close
 		return content
 	}

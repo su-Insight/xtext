@@ -8,10 +8,10 @@
  */
 package org.eclipse.xtext.xtext.wizard;
 
-import com.google.common.base.Charsets;
 import com.google.common.collect.Iterables;
 import com.google.common.io.Resources;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
@@ -110,7 +110,7 @@ public class ParentProjectDescriptor extends ProjectDescriptor {
 
   private CharSequence loadResource(final String resourcePath) {
     try {
-      return Resources.toString(this.getClass().getClassLoader().getResource(resourcePath), Charsets.ISO_8859_1);
+      return Resources.toString(this.getClass().getClassLoader().getResource(resourcePath), StandardCharsets.ISO_8859_1);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

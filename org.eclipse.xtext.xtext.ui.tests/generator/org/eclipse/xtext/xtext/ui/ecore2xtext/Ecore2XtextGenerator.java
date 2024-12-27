@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 itemis AG (http://www.itemis.eu) and others.
+ * Copyright (c) 2010, 2024 itemis AG (http://www.itemis.eu) and others.
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
  * http://www.eclipse.org/legal/epl-2.0.
@@ -10,6 +10,7 @@ package org.eclipse.xtext.xtext.ui.ecore2xtext;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -30,7 +31,6 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.xtext.ui.wizard.project.XtextProjectInfo;
 import org.eclipse.xtext.xtext.wizard.EPackageInfo;
 
-import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 
 /**
@@ -82,7 +82,7 @@ public class Ecore2XtextGenerator extends AbstractWorkflowComponent2 {
 		createXtextProjectInfo(issues);
 		CharSequence grammar = xtextProjectInfo.getRuntimeProject().grammar();
 		try {
-			Files.asCharSink(new File(genPath, xtextProjectInfo.getRuntimeProject().getGrammarFilePath()), Charsets.ISO_8859_1).write(grammar);
+			Files.asCharSink(new File(genPath, xtextProjectInfo.getRuntimeProject().getGrammarFilePath()), StandardCharsets.ISO_8859_1).write(grammar);
 		} catch (IOException e) {
 			String message = "Can't create grammar file";
 			log.error(message, e);

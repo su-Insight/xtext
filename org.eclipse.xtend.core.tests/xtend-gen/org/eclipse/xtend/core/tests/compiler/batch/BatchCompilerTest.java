@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2022 itemis AG (http://www.itemis.eu) and others.
+ * Copyright (c) 2012, 2024 itemis AG (http://www.itemis.eu) and others.
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
  * http://www.eclipse.org/legal/epl-2.0.
@@ -8,11 +8,11 @@
  */
 package org.eclipse.xtend.core.tests.compiler.batch;
 
-import com.google.common.base.Charsets;
 import com.google.inject.Inject;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -696,7 +696,7 @@ public class BatchCompilerTest {
   private String getContents(final String fileName) {
     try {
       File _file = new File(fileName);
-      return com.google.common.io.Files.asCharSource(_file, Charsets.UTF_8).read();
+      return com.google.common.io.Files.asCharSource(_file, StandardCharsets.UTF_8).read();
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

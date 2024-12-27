@@ -8,8 +8,8 @@
  *******************************************************************************/
 package org.eclipse.xtext.xtext.wizard
 
-import com.google.common.base.Charsets
 import com.google.common.io.Resources
+import java.nio.charset.StandardCharsets
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 
 @FinalFieldsConstructor
@@ -73,7 +73,7 @@ class ParentProjectDescriptor extends ProjectDescriptor {
 	}
 
 	def private CharSequence loadResource(String resourcePath) {
-		Resources.toString(class.classLoader.getResource(resourcePath), Charsets.ISO_8859_1)
+		Resources.toString(class.classLoader.getResource(resourcePath), StandardCharsets.ISO_8859_1)
 	}
 
 	override buildGradle() {

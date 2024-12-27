@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2017 itemis AG (http://www.itemis.eu) and others.
+ * Copyright (c) 2012, 2024 itemis AG (http://www.itemis.eu) and others.
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
  * http://www.eclipse.org/legal/epl-2.0.
@@ -11,6 +11,7 @@ package org.eclipse.xtext.common.types.ui.trace;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IProject;
@@ -43,7 +44,6 @@ import org.eclipse.xtext.ui.generator.trace.ITraceForStorageProvider;
 import org.eclipse.xtext.util.Pair;
 import org.eclipse.xtext.util.Tuples;
 
-import com.google.common.base.Charsets;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
@@ -155,7 +155,7 @@ public class TraceForTypeRootProvider implements ITraceForTypeRootProvider {
 			return Charset.forName(ResourcesPlugin.getWorkspace().getRoot().getDefaultCharset());
 		} catch (CoreException e) {
 			log.error("Error determining encoding for source file for " + derivedJavaType.getElementName(), e);
-			return Charsets.UTF_8;
+			return StandardCharsets.UTF_8;
 		}
 	}
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2022 itemis AG (http://www.itemis.eu) and others.
+ * Copyright (c) 2012, 2024 itemis AG (http://www.itemis.eu) and others.
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
  * http://www.eclipse.org/legal/epl-2.0.
@@ -8,7 +8,6 @@
  *******************************************************************************/
 package org.eclipse.xtend.core.tests.compiler.batch
 
-import com.google.common.base.Charsets
 import com.google.common.io.Files
 import com.google.inject.Inject
 import java.io.File
@@ -29,6 +28,7 @@ import org.junit.runner.RunWith
 
 import static org.eclipse.xtext.util.Files.*
 import static org.junit.Assert.*
+import java.nio.charset.StandardCharsets
 
 /**
  * Batch compiler tests.
@@ -466,7 +466,8 @@ class BatchCompilerTest {
 	}
 	
 	def private String getContents(String fileName) {
-		Files.asCharSource(new File(fileName), Charsets.UTF_8).read()
+		Files.asCharSource(new File(fileName), StandardCharsets.UTF_8
+		).read()
 	}
 
 	@Test
